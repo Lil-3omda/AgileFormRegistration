@@ -30,6 +30,8 @@ namespace AgileForm.Controllers
             var user = _user.GetByEmail(registrationView.Email);
             if (user != null && user.Password == registrationView.Password)
             {
+                HttpContext.Session.SetString("UserEmail", user.Email);
+                HttpContext.Session.SetString("UserName", user.Name);
                 ViewData["Message"] = "Login successful!";
                 return View("Welcome");
             }
@@ -68,6 +70,11 @@ namespace AgileForm.Controllers
             _user.Save();
 
             TempData["Message"] = "Account created successfully. Please log in.";
+            return RedirectToAction("Index");
+        }
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
     }
