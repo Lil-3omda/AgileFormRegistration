@@ -1,0 +1,48 @@
+﻿@model AgileForm.Models.ViewModel.RegistrationViewModel
+
+@{
+    ViewData["Title"] = "SignUp";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="col-md-6">
+        <div class="card shadow rounded-3">
+            <div class="card-body p-4">
+                <h3 class="card-title text-center mb-4">Create Account</h3>
+
+                <form asp-action="AddUser" method="post" novalidate>
+                    <div class="mb-3">
+                        <label asp-for="Name" class="form-label"></label>
+                        <input asp-for="Name" class="form-control" placeholder="Your full name" />
+                        <span asp-validation-for="Name" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Email" class="form-label"></label>
+                        <input asp-for="Email" class="form-control" placeholder="example@email.com" />
+                        <span asp-validation-for="Email" class="text-danger small"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label asp-for="Password" class="form-label"></label>
+                        <input asp-for="Password" class="form-control" type="password" placeholder="Strong password" />
+                        <span asp-validation-for="Password" class="text-danger small"></span>
+                    </div>
+
+                    <button type="submit" class="btn btn-success w-100">Sign Up</button>
+                </form>
+
+                <p class="text-center mt-3">
+                    Already have an account?
+                    <a asp-controller="Register" asp-action="Index">Login here</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

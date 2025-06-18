@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Welcome";
+}
+
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
+    <div class="col-md-8">
+        <div class="card shadow rounded-3">
+            <div class="card-body p-5 text-center">
+                <h1 class="text-success mb-4">@ViewData["Message"]</h1>
+
+                <p class="lead">You have successfully logged in to <strong>AgileForm</strong>.</p>
+
+                <hr class="my-4" />
+
+                <div class="mb-4">
+                    <p>What would you like to do next?</p>
+                    <div class="d-grid gap-2 col-6 mx-auto">
+                        <a asp-controller="Register" asp-action="Welcome" class="btn btn-outline-primary">Go to Dashboard</a>
+                        <a asp-controller="Register" asp-action="Welcome" class="btn btn-outline-secondary">View Your Profile</a>
+                        <a asp-controller="Register" asp-action="Index" class="btn btn-danger">Logout</a>
+                    </div>
+                </div>
+
+                <p class="text-muted mt-5">Need help? <a href="#">Contact support</a></p>
+            </div>
+        </div>
+    </div>
+</div>
