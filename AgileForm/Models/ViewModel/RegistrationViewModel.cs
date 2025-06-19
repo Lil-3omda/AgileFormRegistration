@@ -10,7 +10,7 @@ namespace AgileForm.Models.ViewModel
         [MinLength(3,ErrorMessage ="Minimum Length is 3")]
         public string? Name { get; set; }
         [RegularExpression(@"^[^@\s]+@[^@\s]+\.[^@\s]+$", ErrorMessage = "Invalid email format.")]
-        //[Unique]
+        [Unique]
         public string Email { get; set; }
 
         [RegularExpression(@"^(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,32}$",

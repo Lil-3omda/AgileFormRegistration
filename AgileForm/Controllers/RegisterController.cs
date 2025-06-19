@@ -21,14 +21,14 @@ namespace AgileForm.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Login(RegistrationViewModel registrationView)
+        public IActionResult Login(LoginViewModel LoginUser)
         {
             if (!ModelState.IsValid)
-                return View("Index", registrationView);
+                return View("Index", LoginUser);
 
 
-            var user = _user.GetByEmail(registrationView.Email);
-            if (user != null && user.Password == registrationView.Password)
+            var user = _user.GetByEmail(LoginUser.Email);
+            if (user != null && user.Password == LoginUser.Password)
             {
                 HttpContext.Session.SetString("UserEmail", user.Email);
                 HttpContext.Session.SetString("UserName", user.Name);
@@ -37,7 +37,7 @@ namespace AgileForm.Controllers
             }
 
             ModelState.AddModelError(string.Empty, "Invalid email or password.");
-            return View("Index", registrationView);
+            return View("Index", LoginUser);
         }
 
         public IActionResult SignUp()
